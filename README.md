@@ -26,7 +26,7 @@ Juan Antonio Breña Moral
 ### Problem 1
 
 Ancient European peoples worshiped many gods like Greek, Roman & Nordic gods.
-Every Good is possible to represented as the concatenation of every character converted in Decimal.
+Every God is possible to represented as the concatenation of every character converted in Decimal.
 Zeus = 122101117115
 
 Load the list of Gods and find the sum of God names starting with the letter `n` converted to number.
