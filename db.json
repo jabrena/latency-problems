@@ -1,0 +1,44 @@
+{
+  "greek": [
+    "Zeus",
+    "Hera",
+    "Poseidon",
+    "Demeter",
+    "Ares",
+    "Athena",
+    "Apollo",
+    "Artemis",
+    "Hephaestus",
+    "Aphrodite",
+    "Hermes",
+    "Dionysus",
+    "Hades",
+    "Hypnos",
+    "Nike",
+    "Janus",
+    "Nemesis",
+    "Iris",
+    "Hecate",
+    "Tyche"
+  ],
+  "nordic": [
+    "Baldur",
+    "Freyja",
+    "Heimdall",
+    "Frigga",
+    "Hel",
+    "Loki",
+    "Njord",
+    "Odin",
+    "Thor",
+    "Tyr"
+  ],
+  "roman": [
+    "Venus",
+    "Mars",
+    "Neptun",
+    "Mercury",
+    "Pluto",
+    "Jupiter"
+  ]
+}
