@@ -35,3 +35,5 @@ Load the list of Gods and find the sum of God names starting with the letter `n`
 Every connection with the REST API has a Timeout of 1 second.
 If in the process to load the list, the timeout is reached, the process will calculate with the rest of
 the lists.
+REST API: https://my-json-server.typicode.com/jabrena/latency-problems
+
