@@ -28,7 +28,7 @@ Juan Antonio Breña Moral
 
 Ancient European peoples worshiped many gods like Greek, Roman & Nordic gods.
 Every God is possible to be represented as the concatenation of every character converted in Decimal.
-`Zeus = 122101117115
+`Zeus` = 122101117115
 
 Load the list of Gods and find the sum of God names starting with the letter `n`.
 
