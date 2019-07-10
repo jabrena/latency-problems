@@ -18,7 +18,7 @@ in `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/a
 The purpose of this repository is the creation of a set problems adding the Latency as part of the problem to be solved
 in many different ways.
 
-Enjoy in the journey!
+Enjoy the journey!
 
 Juan Antonio Breña Moral
 
