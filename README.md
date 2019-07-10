@@ -33,7 +33,7 @@ Every God is possible to be represented as the concatenation of every character 
 Load the list of Gods and find the sum of God names starting with the letter `n`.
 
 **Notes:** 
-Every connection with any API has a Timeout of `2` seconds.
+Review the timeout for Every connection.
 If in the process to load the list, the timeout is reached, the process will calculate with the rest of
 the lists.
 REST API: https://my-json-server.typicode.com/jabrena/latency-problems
@@ -46,8 +46,18 @@ If you try to find further information about `Zeus` you should visit the address
 Load the list of Greek Gods and discover what is the God with more literature described on Wikipedia.
 
 **Notes:** 
-Every connection with any API has a Timeout of `2` seconds.
+Review the timeout for Every connection.
 REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 REST API 2: https://en.wikipedia.org/wiki/{greekGod}
+
+## References
+
+ - https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/CompletableFuture.html
+ - https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html
+ - https://kotlinlang.org/docs/reference/coroutines-overview.html
+ - https://clojuredocs.org/clojure.core/promise
+ - https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html
+ - https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html
+ - http://reactivex.io/documentation/operators.html
 
 
