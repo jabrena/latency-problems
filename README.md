@@ -59,5 +59,4 @@ REST API 2: https://en.wikipedia.org/wiki/{greekGod}
  - https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html
  - https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html
  - http://reactivex.io/documentation/operators.html
-
-
+ - http://wiremock.org/docs/simulating-faults/
