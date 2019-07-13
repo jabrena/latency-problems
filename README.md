@@ -9,11 +9,13 @@ different ways using an Object Oriented, Functional or Reactive approaches.
 But in the implementation process, I missed that the problem doesn´t add any Latency factor to
 increase the complexity and this is part of the daily problems for every Software Engineer in the market.
 
+Programming languages provide native solutions to manage latency.
 In `Java`, you can use [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) objects, 
 in `Kotlin` you can use [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html), 
-in `Scala` you can use [Future](https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html).
-in `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) or 
-[Flux<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) objects, 
+in `Scala` you can use [Future](https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html),
+On top of the languages, exist libraries that refine the ideas and new features.
+In `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) or 
+[Flux<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) objects. 
 
 The purpose of this repository is the creation of a set problems adding the Latency as part of the problem to be solved
 in many different ways.
@@ -49,6 +51,17 @@ Load the list of Greek Gods and discover what is the God with more literature de
 Review the timeout for Every connection.
 REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 REST API 2: https://en.wikipedia.org/wiki/{greekGod}
+
+### Problem 3
+
+God fans are using a new API to provide information about `GREEK`, `ROMAN` or `NORDIC` gods.
+It is important that the interface support Concurrent access to the API. Provide a Test that ensure
+that in a Concurrent scenario, the information retrieved is `Thread Safe`.
+
+**Notes:** 
+Review the timeout for Every connection.
+REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+
 
 ## References
 
