@@ -53,6 +53,8 @@ REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 REST API 2: https://en.wikipedia.org/wiki/{greekGod}
 
 
+
+
 ### Problem 3
 
 God fans are using a new API to provide information about `GREEK`, `ROMAN` or `NORDIC` gods.
