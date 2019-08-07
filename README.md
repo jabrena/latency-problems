@@ -69,7 +69,7 @@ REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 
 ``` gherkin
 Given a set of providers to exchange money, 
-When  make the request to exchange rate to convert 100 EUR to USD
+When  make the request to get the rate for the exchange 100 EUR to USD
 Then  find the average among the providers which their response was 200
 ```
 
