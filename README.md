@@ -67,17 +67,19 @@ REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 
 ### Problem 4
 
+``` gherkin
 Given a set of providers to exchange money, 
-When make the request to exchange rate to convert 100 EUR to USD
-Then find the average among the providers which their response was 200
+When  make the request to exchange rate to convert 100 EUR to USD
+Then  find the average among the providers which their response was 200
+```
 
 **Notes:** 
 Review the timeout for Every connection.
 Money exchange providers:
-- https://transferwise.com/fr?sourceCurrency=EUR&targetCurrency=GBP&sourceAmount=1
-- https://www.xe.com/es/currencyconverter/convert/?Amount=1&From=USD&To=EUR
-- https://www.iban.com/currency-converter?from_currency=USD&to_currency=EUR&amount=1
-- https://www.x-rates.com/calculator/?from=USD&to=EUR&amount=1
+- https://transferwise.com/fr?sourceCurrency=EUR&targetCurrency=GBP&sourceAmount=100
+- https://www.xe.com/es/currencyconverter/convert/?Amount=100&From=USD&To=EUR
+- https://www.iban.com/currency-converter?from_currency=USD&to_currency=EUR&amount=100
+- https://www.x-rates.com/calculator/?from=USD&to=EUR&amount=100
 
 ## Troubleshooting
 
