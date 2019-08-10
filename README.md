@@ -81,6 +81,26 @@ Money exchange providers:
 - https://www.iban.com/currency-converter?from_currency=EUR&to_currency=USD&amount=100
 - https://www.x-rates.com/calculator/?from=EUR&to=USD&amount=100
 
+
+### Problem 5
+
+```
+Feature: Load Balancing
+
+Scenario: Consume a REST Greek God Service
+    Given a 5 instances of the same REST API about Greek gods
+    When  the client sends the request
+    And   execute a load balancing policy to distribute the traffic
+    Then  return all gods starting with `a`
+```
+
+**Notes:** 
+
+- Review the timeout for Every connection.
+- Review the load balancing options
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+
+
 ## Troubleshooting
 
 ### How to know the maximum native threads in your system?
@@ -112,7 +132,7 @@ Review the Test and implementation, it is possible that you are reaching the lim
  - https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html
  - https://kotlinlang.org/docs/reference/coroutines-overview.html
  - https://clojuredocs.org/clojure.core/promise
- - https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html
- - https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html
+ - https://projectreactor.io/docs/core/release/reference/
  - http://reactivex.io/documentation/operators.html
+ - https://github.com/resilience4j/resilience4j 
  - http://wiremock.org/docs/simulating-faults/
