@@ -84,7 +84,7 @@ Money exchange providers:
 
 ### Problem 5
 
-```
+``` gherkin
 Feature: Load Balancing
 
 Scenario: Consume a REST Greek God Service
