@@ -96,6 +96,7 @@ Scenario: Consume a REST Greek God Service
 
 **Notes:** 
 
+- Try to test the solution without any Internet call
 - Review the timeout for Every connection.
 - Review the load balancing options
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
