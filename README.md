@@ -101,6 +101,25 @@ Scenario: Consume a REST Greek God Service
 - Review the load balancing options
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 
+### Problem 6
+
+``` gherkin
+Feature: Retry
+
+Scenario: Consume a REST Greek God Service
+    Given a REST API about Greek gods
+    When  the client sends the request
+    And   execute a Retry Policy
+    Then  return all gods starting with `a`
+```
+
+**Notes:** 
+
+- Try to test the solution without any Internet call
+- Review the timeout for Every connection.
+- Review the retry options
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+
 
 ## Troubleshooting
 
