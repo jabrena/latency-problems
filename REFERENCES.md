@@ -12,10 +12,14 @@
  - https://projectreactor.io/docs/core/release/reference/
  - http://reactivex.io/documentation/operators.html
  - https://resilience4j.readme.io/docs
+
+
  
 ## Testing libraries
  
  - http://wiremock.org/docs/simulating-faults/
+
+
 
 ## Specifications
 
