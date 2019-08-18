@@ -152,41 +152,7 @@ Scenario: Test a bad internal configuration
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 
 
-## Troubleshooting
+## [Troubleshooting](./TROUBLESHOOTING.md)
 
-### How to know the maximum native threads in your system?
+## [References](./REFERENCES.md)
 
-```
-OSX: sysctl kern.num_threads
-OSX: ulimit -u
-Linux: cat /proc/sys/kernel/threads-max
-```
-
-### What happen if I receive `pthread_create failed (EAGAIN)`?
-
-If you receive the following error message in your tests:
-
-```
-[26.110s][warning][os,thread] Failed to start thread - pthread_create failed (EAGAIN) for attributes: 
-stacksize: 1024k, guardsize: 4k, detached.
-Process finished with exit code 130 (interrupted by signal 2: SIGINT)
-Caused by: java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or 
-process/resource limits reached
-```
-
-Review the Test and implementation, it is possible that you are reaching the limit of your hardware.
-
-
-## References
-
- - https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/CompletableFuture.html
- - https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html
- - https://kotlinlang.org/docs/reference/coroutines-overview.html
- - https://clojuredocs.org/clojure.core/promise
- - https://projectreactor.io/docs/core/release/reference/
- - http://reactivex.io/documentation/operators.html
- - https://github.com/resilience4j/resilience4j 
- - http://wiremock.org/docs/simulating-faults/
- - https://cucumber.io/docs/gherkin/reference/
- - https://docs.behat.org/en/v2.5/guides/1.gherkin.html
- - https://docs.google.com/document/d/1pkhePZ7eaOWskai3gmopa4Sp6o88r1kGZITVRs_PN7Q/pub
