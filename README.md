@@ -124,6 +124,12 @@ Scenario: Force an internal Retry behaviour
     And   execute a Retry Policy
     Then  return all gods starting with `a`
 
+Scenario: Consume the API with a bad response
+    Given a REST API about Greek gods
+    When  the client sends the request
+    And   execute a Retry Policy
+    Then  return all gods starting with `a`
+
 Scenario: Consume the API with a corrupted response
     Given a REST API about Greek gods
     When  the client sends the request
@@ -182,3 +188,5 @@ Review the Test and implementation, it is possible that you are reaching the lim
  - https://github.com/resilience4j/resilience4j 
  - http://wiremock.org/docs/simulating-faults/
  - https://cucumber.io/docs/gherkin/reference/
+ - https://docs.behat.org/en/v2.5/guides/1.gherkin.html
+ - https://docs.google.com/document/d/1pkhePZ7eaOWskai3gmopa4Sp6o88r1kGZITVRs_PN7Q/pub
