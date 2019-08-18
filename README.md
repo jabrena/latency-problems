@@ -15,8 +15,8 @@ in `Kotlin` you can use [Coroutines](https://kotlinlang.org/docs/reference/corou
 in `Scala` you can use [Future](https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html),
 in `Clojure` you can use [Future](https://clojuredocs.org/clojure.core/future).
 
-On top of the languages, exist libraries that improve the way to manage asynchronous calls 
-and add Backpressure support for Reactive use cases. In `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) or 
+On top of the languages, exist libraries that improve the way to manage [asynchronous](https://www.reactivemanifesto.org/glossary#Asynchronous) calls 
+and add [Backpressure](https://www.reactivemanifesto.org/glossary#Back-Pressure) support for Reactive use cases. In `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) or 
 [Flux<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) objects,
 in `RxJava`, you can use [Flowable<T>](http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html) 
 
