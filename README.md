@@ -110,13 +110,32 @@ Scenario: Consume a REST Greek God Service
 ### Problem 6
 
 ``` gherkin
-Feature: Retry
+Feature: Consume a REST Greek God Service
 
-Scenario: Consume a REST Greek God Service
+Scenario: Consume the API in a Happy path
     Given a REST API about Greek gods
     When  the client sends the request
     And   execute a Retry Policy
     Then  return all gods starting with `a`
+
+Scenario: Force an internal Retry behaviour
+    Given a REST API about Greek gods
+    When  the client sends the request
+    And   execute a Retry Policy
+    Then  return all gods starting with `a`
+
+Scenario: Consume the API with a corrupted response
+    Given a REST API about Greek gods
+    When  the client sends the request
+    And   execute a Retry Policy
+    Then  return all gods starting with `a`
+
+Scenario: Test a bad internal configuration
+    Given a REST API about Greek gods
+    When  the client sends the request
+    And   execute a Retry Policy
+    Then  return all gods starting with `a`
+
 ```
 
 **Notes:** 
