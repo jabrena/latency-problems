@@ -1,4 +1,4 @@
-# latency-problems
+# Latency problems
 
 ## Motivation
 
