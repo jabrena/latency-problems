@@ -3,19 +3,25 @@
 ## Motivation
 
 [Euler problems](https://projecteuler.net/archives) are an excellent source of Mathematical
-problems to improve your programming skills. The problems are able to be solved in many 
-different ways using an Object Oriented, Functional or Reactive approaches.
+problems to improve your programming skills. The problems are able to be solved with multiple 
+programming paradigms like Object Oriented, Functional or Reactive.
 
-But in the implementation process, I missed that the problem doesn´t add any Latency factor to
+But in the implementation process, I missed that the problems don´t add any Latency factor to
 increase the complexity and this is part of the daily problems for every Software Engineer in the market.
 
 Programming languages provide native solutions to manage latency.
-In `Java`, you can use [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) objects, 
+In `Java`, you can use [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html), 
 in `Kotlin` you can use [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html), 
 in `Scala` you can use [Future](https://www.scala-lang.org/api/2.12.3/scala/concurrent/Future.html),
-On top of the languages, exist libraries that refine the ideas and new features.
-In `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) or 
-[Flux<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) objects. 
+in `Clojure` you can use [Future](https://clojuredocs.org/clojure.core/future).
+
+On top of the languages, exist libraries that improve the way to manage asynchronous calls 
+and add Backpressure support for Reactive use cases. In `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) or 
+[Flux<T>](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html) objects,
+in `RxJava`, you can use [Flowable<T>](http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html) 
+
+Finally, exist libraries that offer rich implementations of Reactive programming patterns.
+In `Resilience4j`, you could find solutions for: `Circuit breaking`, `Rate limiting`, `Bulkheading`, `Automatic retrying`
 
 The purpose of this repository is the creation of a set problems adding the Latency as part of the problem to be solved
 in many different ways.
