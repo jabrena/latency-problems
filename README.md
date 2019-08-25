@@ -175,7 +175,7 @@ Scenario: Force an internal Circuit Breaker behaviour
 
 - Try to test the solution without any Internet call
 - Review the timeout for Every connection.
-- Review the retry options
+- Review the circuit breaker options
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/roman
 
 
