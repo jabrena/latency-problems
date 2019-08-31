@@ -182,11 +182,12 @@ Scenario: Force an internal Circuit Breaker behaviour
 
 ``` gherkin
 Feature: Consume a REST Indian God Service
+
 Background:
-A new REST template was deployed recently and the service 
-doesn´t have the same capacity than other God Services.
-It is necessary to protect the service with a rate limiter temporally
-meanwhile the God Infrastructure is increasing the consumer capacity.
+    A new REST template was deployed recently and the service 
+    doesn´t have the same capacity than other God Services.
+    It is necessary to protect the service with a rate limiter temporally
+    meanwhile the God Infrastructure is increasing the consumer capacity.
 
 Scenario: Consume the API in a Happy path case
     Given a REST API about Indian gods
