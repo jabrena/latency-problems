@@ -112,7 +112,7 @@ Scenario: Consume a REST Greek God Service
 ``` gherkin
 Feature: Consume a REST Greek God Service
 
-Scenario: Consume the API in a Happy path
+Scenario: Consume the API in a Happy path case
     Given a REST API about Greek gods
     When  the client sends the request
     And   execute a Retry Policy
@@ -157,7 +157,7 @@ Scenario: Test a bad internal configuration
 ``` gherkin
 Feature: Consume a REST Roman God Service
 
-Scenario: Consume the API in a Happy path
+Scenario: Consume the API in a Happy path case
     Given a REST API about Roman gods
     When  the client sends the request
     And   execute a Circuit Breaker Policy
@@ -177,6 +177,35 @@ Scenario: Force an internal Circuit Breaker behaviour
 - Review the timeout for Every connection.
 - Review the circuit breaker options
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/roman
+
+### Problem 8
+
+``` gherkin
+Feature: Consume a REST Indian God Service
+Background:
+A new REST template was deployed recently and the service 
+doesn´t have the same capacity than other God Services.
+It is necessary to protect the service with a rate limiter temporally
+meanwhile the God Infrastructure is increasing the consumer capacity.
+
+Scenario: Consume the API in a Happy path case
+    Given a REST API about Indian gods
+    When  the client sends the request
+    And   execute a Rate limiter Policy
+    Then  return all gods who contains in the name `a` & `i`
+
+Scenario: Force a Rate limiter behaviour
+    Given a REST API about Indian gods
+    When  the client sends the request
+    And   execute a Rate limiter Policy
+    Then  return all gods who contains in the name `a` & `i`
+
+```
+
+- Try to test the solution without any Internet call
+- Review the timeout for Every connection.
+- Review the rate limiter options
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/indian
 
 
 ## [Troubleshooting](./TROUBLESHOOTING.md)
