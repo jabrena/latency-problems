@@ -16,7 +16,7 @@ sequenceDiagram
        Note over Gateway, Greek: or
         Gateway->>Nordic: GET /nordic
         Nordic-->>Gateway: List of gods
-        Gateway->>ConsumerTest: List of gods
+        Gateway-->>ConsumerTest: List of gods
         ConsumerTest->ConsumerTest: Assert
     end
 ```

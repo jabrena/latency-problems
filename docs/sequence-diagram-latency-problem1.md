@@ -9,7 +9,6 @@ sequenceDiagram
     Consumer->>Greek: GET /greek
     Consumer->>Roman: GET /roman
     Consumer->>Nordic: GET /nordic
-    Note left of Consumer: Parallel calls
     Greek-->>Consumer: List of gods
     Consumer->Consumer: Serialize
     Roman-->>Consumer: List of gods
