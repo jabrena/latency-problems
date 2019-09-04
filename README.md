@@ -57,10 +57,13 @@ If you try to find further information about `Zeus` you should visit the address
 
 Load the list of Greek Gods and discover what is the God with more literature described on Wikipedia.
 
+![](./docs/sequence-diagram-latency-problem2.svg)
+
 **Notes:** 
-Review the timeout for Every connection.
-REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
-REST API 2: https://en.wikipedia.org/wiki/{greekGod}
+
+- Review the timeout for Every connection.
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+- REST API 2: https://en.wikipedia.org/wiki/{greekGod}
 
 ### Problem 3
 
