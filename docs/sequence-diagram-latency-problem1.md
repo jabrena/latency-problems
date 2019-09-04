@@ -1,3 +1,10 @@
+# Sequence diagram for Latency problem 1
+
+- https://mermaidjs.github.io/mermaid-live-editor
+
+## Diagram:
+
+```
 sequenceDiagram
     Consumer->>Greek: GET /greek
     Consumer->>Roman: GET /roman
@@ -15,3 +22,12 @@ sequenceDiagram
         Consumer->Consumer: toDigits
         Consumer->Consumer: sum
     end
+```
+
+## Config:
+
+```
+{
+  "theme": "forest"
+}
+```

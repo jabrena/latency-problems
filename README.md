@@ -40,13 +40,15 @@ Every God is possible to be represented as the concatenation of every character 
 
 Load the list of Gods and find the sum of God names starting with the letter `n`.
 
-**Notes:** 
-Review the timeout for Every connection.
-If in the process to load the list, the timeout is reached, the process will calculate with the rest of
-the lists.
-REST API: https://my-json-server.typicode.com/jabrena/latency-problems
-
 ![](./docs/sequence-diagram-latency-problem1.svg)
+
+**Notes:** 
+
+- Review the timeout for Every connection.
+- If in the process to load the list, the timeout is reached, the process will calculate with the rest of
+the lists.
+- REST API: https://my-json-server.typicode.com/jabrena/latency-problems
+
 
 ### Problem 2
 
