@@ -46,6 +46,8 @@ If in the process to load the list, the timeout is reached, the process will cal
 the lists.
 REST API: https://my-json-server.typicode.com/jabrena/latency-problems
 
+![](./docs/sequence-diagram-latency-problem1.svg)
+
 ### Problem 2
 
 Greek gods are quite popular and they have presence in Wikipedia, the multilingual online encyclopedia.
