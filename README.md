@@ -68,14 +68,17 @@ Load the list of Greek Gods and discover what is the God with more literature de
 ### Problem 3
 
 
-
 God fans are using a new API to provide information about `GREEK`, `ROMAN` or `NORDIC` gods.
 It is important that the interface support Concurrent access to the API. Provide a Test that ensure
 that in a Concurrent scenario, the information retrieved is `Thread Safe`.
 
+![](./docs/sequence-diagram-latency-problem3.svg)
+
+
 **Notes:** 
-Review the timeout for Every connection.
-REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+
+- Review the timeout for Every connection.
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 
 
 ### Problem 4
