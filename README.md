@@ -89,6 +89,8 @@ When  make the request to get the rate for the exchange 100 EUR into USD
 Then  find the average rate from valid responses from the the providers
 ```
 
+![](./docs/sequence-diagram-latency-problem4.svg)
+
 **Notes:** 
 Review the timeout for Every connection.
 Money exchange providers:
