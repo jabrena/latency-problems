@@ -7,8 +7,8 @@
 ```
 sequenceDiagram
     loop rate limiter
-        Consumer->>Greek: GET /greek
-        Greek-->>Consumer: List of gods
+        Consumer->>Indian: GET /indian
+        Indian-->>Consumer: List of gods
     end
     loop Stream    
         Consumer->Consumer: filter

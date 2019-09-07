@@ -7,8 +7,8 @@
 ```
 sequenceDiagram
     loop circuit breaker
-        Consumer->>Greek: GET /greek
-        Greek-->>Consumer: List of gods
+        Consumer->>Roman: GET /roman
+        Roman-->>Consumer: List of gods
     end
     loop Stream    
         Consumer->Consumer: filter
