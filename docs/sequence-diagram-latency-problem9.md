@@ -7,8 +7,12 @@
 ```
 sequenceDiagram
     loop bulkhead
-        Consumer->>Celtiberian: GET /celtiberian
-        Celtiberian-->>Consumer: List of gods
+        Consumer->>GodCollector: GET /gods
+        GodCollector->>Greek: GET /greek
+        GodCollector->>Roman: GET /roman
+        Greek-->>GodCollector: List of gods
+        Roman-->>GodCollector: List of gods
+        GodCollector-->>Consumer: List of gods
     end
 ```
 
