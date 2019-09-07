@@ -10,6 +10,11 @@ sequenceDiagram
     Consumer->>GodBus: Topic /god
 ```
 
+## Visualization:
+
+![](./sequence-diagram-latency-problem10.svg)
+
+
 ## Config:
 
 ```

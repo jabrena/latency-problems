@@ -20,6 +20,10 @@ sequenceDiagram
     end
 ```
 
+## Visualization:
+
+![](./sequence-diagram-latency-problem1.svg)
+
 ## Config:
 
 ```

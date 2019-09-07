@@ -26,6 +26,11 @@ sequenceDiagram
     end
 ```
 
+## Visualization:
+
+![](./sequence-diagram-latency-problem5.svg)
+
+
 ## Config:
 
 ```
