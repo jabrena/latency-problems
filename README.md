@@ -112,6 +112,8 @@ Scenario: Consume a REST Greek God Service
     Then  return all gods starting with `a`
 ```
 
+![](./docs/sequence-diagram-latency-problem5.svg)
+
 **Notes:** 
 
 - Try to test the solution without any Internet call
@@ -156,6 +158,8 @@ Scenario: Test a bad internal configuration
 
 ```
 
+![](./docs/sequence-diagram-latency-problem6.svg)
+
 **Notes:** 
 
 - Try to test the solution without any Internet call
@@ -182,6 +186,8 @@ Scenario: Force an internal Circuit Breaker behaviour
     Then  return all gods finishing the name with `s`
 
 ```
+
+![](./docs/sequence-diagram-latency-problem7.svg)
 
 **Notes:** 
 
@@ -214,6 +220,10 @@ Scenario: Force a Rate limiter behaviour
     Then  return all gods who contains in the name `a` & `i`
 
 ```
+
+![](./docs/sequence-diagram-latency-problem8.svg)
+
+**Notes:** 
 
 - Try to test the solution without any Internet call
 - Review the timeout for Every connection.
