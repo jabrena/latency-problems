@@ -34,11 +34,18 @@ Juan Antonio Breña Moral
 
 ### Problem 1
 
-Ancient European peoples worshiped many gods like Greek, Roman & Nordic gods.
-Every God is possible to be represented as the concatenation of every character converted in Decimal.
-`Zeus` = 122101117115
+``` gherkin 
+Feature: Consume some REST God Services
 
-Load the list of Gods and find the sum of God names starting with the letter `n`.
+Background: Decimal representation of Zeus: `Zeus` = 122101117115
+
+Scenario: Consume the API in a Happy path case
+    Given a list of REST API about Greek, Roman & Nordic
+    When  call the API
+    Then  filter by god starting with `n`
+    And   convert the names into a decimal format
+    And   sum
+```
 
 ![](./docs/sequence-diagram-latency-problem1.svg)
 
