@@ -295,7 +295,7 @@ Scenario: Calculate the influence of Indian gods in Mahabharata
        
 ```
 
-![](.docs/sequence-diagram-latency-problem9-1.svg)
+![](./docs/sequence-diagram-latency-problem9-1.svg)
 
 
 - Try to test the solution without any Internet call
