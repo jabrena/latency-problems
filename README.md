@@ -289,8 +289,9 @@ The Mahābhārata is one of the two major Sanskrit epics of ancient India
 Scenario: Calculate the influence of Indian gods in Mahabharata
     Given a REST API about Indian Gods
     When  the client sends the request
-    Then  return the top 3 indian gods most mentioned Mahabharata
-    And with presence in Wikipedia
+    Then  return the Top 3 indian gods mentioned in Mahabharata
+    And   with presence in Wikipedia
+    And   the number of hits in Mahabharata data source
        
 ```
 
