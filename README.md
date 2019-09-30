@@ -284,7 +284,7 @@ Scenario: Force a Bulkhead behaviour
 Feature: Calculate the popularity of Indian gods in Mahabharata
 
 Background:
-The Mahābhārata is one of the two major Sanskrit epics of ancient India 
+The Mahabharata is one of the two major Sanskrit epics of ancient India 
 
 Scenario: Calculate the influence of Indian gods in Mahabharata
     Given a REST API about Indian Gods
@@ -294,6 +294,9 @@ Scenario: Calculate the influence of Indian gods in Mahabharata
     And   the number of hits in Mahabharata data source
        
 ```
+
+![](.docs/sequence-diagram-latency-problem9-1.svg)
+
 
 - Try to test the solution without any Internet call
 - Review the timeout for Every connection.
