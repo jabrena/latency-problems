@@ -278,6 +278,27 @@ Scenario: Force a Bulkhead behaviour
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 - REST API 2: https://my-json-server.typicode.com/jabrena/latency-problems/roman
 
+### Problem 9
+
+``` gherkin
+Feature: Calculate the popularity of Indian gods in Mahabharata
+
+Background:
+The Mahābhārata is one of the two major Sanskrit epics of ancient India 
+
+Scenario: Calculate the influence of Indian gods in Mahabharata
+    Given a REST API about Indian Gods
+    When  the client sends the request
+    Then  return the top 3 indian gods most mentioned Mahabharata
+    And with presence in Wikipedia
+       
+```
+
+- Try to test the solution without any Internet call
+- Review the timeout for Every connection.
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/indian
+- Mahabharata Data Source: https://archive.org/stream/TheMahabharataOfKrishna-dwaipayanaVyasa/MahabharataOfVyasa-EnglishTranslationByKMGanguli_djvu.txt
+- REST API 2: https://en.wikipedia.org/wiki/{indianGod}
 
 ## [Troubleshooting](./TROUBLESHOOTING.md)
 
