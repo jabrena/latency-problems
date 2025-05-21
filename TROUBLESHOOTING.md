@@ -13,10 +13,10 @@ Linux: cat /proc/sys/kernel/threads-max
 If you receive the following error message in your tests:
 
 ```
-[26.110s][warning][os,thread] Failed to start thread - pthread_create failed (EAGAIN) for attributes: 
+[26.110s][warning][os,thread] Failed to start thread - pthread_create failed (EAGAIN) for attributes:
 stacksize: 1024k, guardsize: 4k, detached.
 Process finished with exit code 130 (interrupted by signal 2: SIGINT)
-Caused by: java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or 
+Caused by: java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or
 process/resource limits reached
 ```
 
