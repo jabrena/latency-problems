@@ -1,0 +1,28 @@
+@startuml
+title Sequence diagram for Latency problem 3
+
+participant ConsumerTest
+participant Gateway
+participant Greek
+participant Roman
+participant Nordic
+
+loop Stream
+    ConsumerTest -> Gateway: GET /{god}
+
+    Gateway -> Greek: GET /greek
+    Greek --> Gateway: List of gods
+    note over Gateway, Greek: or
+
+    Gateway -> Roman: GET /roman
+    Roman --> Gateway: List of gods
+    note over Gateway, Greek: or
+
+    Gateway -> Nordic: GET /nordic
+    Nordic --> Gateway: List of gods
+
+    Gateway --> ConsumerTest: List of gods
+
+    ConsumerTest -> ConsumerTest: Assert
+end loop
+@enduml

@@ -1,6 +1,6 @@
 # Problem 1
 
-``` gherkin
+```gherkin
 Feature: Consume some REST God Services
 
 Background: Decimal representation of `Zeus` is 122101117115
@@ -21,3 +21,10 @@ Scenario: Consume the APIs considering some latency in the greek service
 ```
 
 ![](./sequence-diagram-latency-problem1.svg)
+
+**Notes:**
+
+- Review the timeout for Every connection.
+- If in the process to load the list, the timeout is reached, the process will calculate with the rest of
+the lists.
+- REST API: https://my-json-server.typicode.com/jabrena/latency-problems
