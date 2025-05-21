@@ -44,11 +44,11 @@ Scenario Outline: Consume the APIs when one service is unresponsive
       | Nordic API      | <sum_if_nordic_fails>|
 ```
 
-## UML Sequence diagram
+## UML Sequence diagram
 
 ![](./sequence-diagram-latency-problem1.png)
 
-## Open API to integrate with the REST API
+## Open API to integrate with the REST API
 
-- [OAS](./my-json-server-oas.yaml)
+- [Open API Specification](./my-json-server-oas.yaml)
 
