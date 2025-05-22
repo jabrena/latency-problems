@@ -5,7 +5,8 @@
 ```gherkin
 Feature: Consume some REST God Services
 # Notes:
-# - Decimal Conversion Rule: Name then each char to its Unicode int value, then concatenate these ints as strings. (e.g., "Zeus" -> z(122)e(101)u(117)s(115) -> "122101117115").
+# - Decimal Conversion Rule: Name then each char to its Unicode int value, then concatenate these ints as strings.
+# (e.g., "Zeus" -> Z(90)e(101)u(117)s(115) -> "90101117115").
 # - If in the process to load the list, the timeout is reached, the process will calculate with the rest of the lists.
 # - Filtering for gods starting with 'n' is case-sensitive (only lowercase 'n').
 # - Greek API: https://my-json-server.typicode.com/jabrena/latency-problems/greek
