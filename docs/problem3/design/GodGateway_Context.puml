@@ -1,0 +1,21 @@
+@startuml God Information Gateway API - System Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title System Context diagram for God Information Gateway API
+
+' External Actors/Users
+Person(apiConsumer, "API Consumer", "Developers building applications that need mythology data")
+
+' The Main System
+System(godGateway, "God Information Gateway API", "Provides unified access to god information from multiple mythology sources through a single REST API endpoint")
+
+' External Systems
+System_Ext(externalMythologyApi, "External Mythology API", "my-json-server.typicode.com - Single API providing mythology data for Greek, Roman, Nordic, Indian, and Celtiberian gods through different endpoints")
+
+' Relationships
+Rel(apiConsumer, godGateway, "Integrates mythology data", "HTTPS/REST API")
+
+Rel(godGateway, externalMythologyApi, "Fetches mythology data from multiple endpoints", "HTTPS/JSON")
+
+SHOW_LEGEND()
+@enduml 

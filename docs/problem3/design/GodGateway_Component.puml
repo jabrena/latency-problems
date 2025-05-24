@@ -1,0 +1,37 @@
+@startuml God Information Gateway API - Gateway Service Components
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Component diagram for Gateway Service in God Information Gateway API
+
+' External Actors
+Person(apiConsumer, "API Consumer", "Makes requests to the gateway")
+
+' Other Containers
+Container(gatewayApi, "Gateway REST API", "Spring Boot", "REST endpoint layer")
+System_Ext(externalMythologyApis, "External Mythology APIs", "External god data services")
+
+' Gateway Service Container Boundary
+Container_Boundary(gatewayService, "Gateway Service") {
+    Component(godController, "God Controller", "Spring MVC @RestController", "Handles HTTP requests for /api/v1/gods/{mythology} endpoint and validates mythology parameters")
+    Component(mythologyService, "Mythology Service", "Spring @Service", "Core business logic for mythology data aggregation and response formatting")
+    
+    Component(mythologyApiClient, "Mythology API Client", "Spring RestClient", "HTTP client for external mythology API with 10-second timeout configuration")
+    Component(controllerAdvice, "Controller Advice", "Spring @ControllerAdvice", "Handles low-level exceptions not managed in regular way and converts to appropriate HTTP responses")
+}
+
+' Relationships
+Rel(apiConsumer, gatewayApi, "Makes HTTP requests", "HTTPS/REST")
+Rel(gatewayApi, godController, "Routes requests", "HTTP")
+
+note right of godController : Validates mythology type\n(GREEK, ROMAN, NORDIC,\nINDIAN, CELTIBERIAN)\n\nHandles business logic errors\nand validation exceptions
+
+Rel(godController, mythologyService, "Requests god data", "getGodsByMythology()")
+
+Rel(mythologyService, mythologyApiClient, "Fetches mythology data", "getMythologyData(endpoint)")
+
+Rel(mythologyApiClient, externalMythologyApis, "GET /greek, /roman, /nordic, /indian, /celtiberian", "HTTPS/JSON")
+
+note right of mythologyApiClient : Configured with\n10-second timeout\nfor all external calls
+
+SHOW_LEGEND()
+@enduml 

@@ -1,0 +1,28 @@
+@startuml God Information Gateway API - Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Container diagram for God Information Gateway API
+
+' External Actors
+Person(apiConsumer, "API Consumer", "Developers building applications")
+
+' External Systems
+System_Ext(externalMythologyApis, "External Mythology APIs", "my-json-server.typicode.com - Greek, Roman, Nordic, Indian, Celtiberian god data services")
+
+' System Boundary
+System_Boundary(godGatewaySystem, "God Information Gateway API") {
+    Container(gatewayApi, "Gateway REST API", "Spring Boot / Java", "Provides REST endpoints for god information retrieval with unified response format")
+    Container(gatewayService, "Gateway Service", "Spring Boot / Java", "Orchestrates requests to external APIs and aggregates responses")
+    Container(externalApiClients, "External API Clients", "Spring RestClient / Java", "HTTP clients for communicating with external mythology services with 10-second timeout configuration")
+}
+
+' Relationships
+Rel(apiConsumer, gatewayApi, "Integrates with", "HTTPS/REST")
+
+Rel(gatewayApi, gatewayService, "Delegates requests", "Java method calls")
+Rel(gatewayService, externalApiClients, "Initiates external calls", "Java method calls")
+
+Rel(externalApiClients, externalMythologyApis, "Fetches mythology data", "HTTPS/JSON with 10s timeout")
+
+SHOW_LEGEND()
+@enduml 
