@@ -1,0 +1,314 @@
+openapi: 3.0.3
+info:
+  title: God Mythology Gateway API
+  description: |
+    Gateway API for retrieving gods from different mythologies.
+    This API provides a unified interface to access gods from various mythological traditions
+    including Greek, Roman, Nordic, Indian, and Celtiberian mythologies.
+
+    The gateway routes requests to appropriate third-party services and ensures
+    thread-safe concurrent access to mythology data.
+
+    Updated to accept lowercase parameters (e.g., "greek" instead of "GREEK")
+    for improved user experience and API consistency. Backward compatibility
+    is maintained for uppercase parameters.
+  version: 1.1.0
+  contact:
+    name: Juan Antonio Breña Moral
+    email: my@email.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /api/v1/gods/{mythology}:
+    get:
+      tags:
+        - God Mythology Gateway
+      summary: Get gods by mythology type
+      description: |
+        Retrieves a list of gods for the specified mythology type.
+        This endpoint supports concurrent access and ensures thread-safe operations.
+
+        The gateway routes requests to the appropriate third-party service based on the mythology parameter:
+        - greek (or GREEK for backward compatibility): Routes to /greek endpoint
+        - roman (or ROMAN for backward compatibility): Routes to /roman endpoint
+        - nordic (or NORDIC for backward compatibility): Routes to /nordic endpoint
+        - indian (or INDIAN for backward compatibility): Routes to /indian endpoint
+        - celtiberian (or CELTIBERIAN for backward compatibility): Routes to /celtiberian endpoint
+
+        Note: The API accepts both lowercase and uppercase parameters for backward compatibility,
+        but responses always return lowercase mythology names.
+      operationId: getGodsByMythology
+      parameters:
+        - name: mythology
+          in: path
+          required: true
+          description: The mythology type to retrieve gods for (case-insensitive)
+          schema:
+            type: string
+            enum:
+              - greek
+              - roman
+              - nordic
+              - indian
+              - celtiberian
+              - GREEK
+              - ROMAN
+              - NORDIC
+              - INDIAN
+              - CELTIBERIAN
+          example: greek
+      responses:
+        '200':
+          description: Successful operation - returns list of gods for the specified mythology
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GodsResponse'
+              examples:
+                greek_gods:
+                  summary: Greek gods example
+                  value:
+                    mythology: "greek"
+                    gods:
+                      - "Zeus"
+                      - "Hera"
+                      - "Poseidon"
+                      - "Demeter"
+                      - "Ares"
+                      - "Athena"
+                      - "Apollo"
+                      - "Artemis"
+                      - "Hephaestus"
+                      - "Aphrodite"
+                      - "Hermes"
+                      - "Dionysus"
+                      - "Hades"
+                      - "Hypnos"
+                      - "Nike"
+                      - "Janus"
+                      - "Nemesis"
+                      - "Iris"
+                      - "Hecate"
+                      - "Tyche"
+                    count: 20
+                    source: "external_api"
+                    timestamp: "2024-01-15T10:30:00Z"
+                roman_gods:
+                  summary: Roman gods example
+                  value:
+                    mythology: "roman"
+                    gods:
+                      - "Venus"
+                      - "Mars"
+                      - "Neptun"
+                      - "Mercury"
+                      - "Pluto"
+                      - "Jupiter"
+                    count: 6
+                    source: "external_api"
+                    timestamp: "2024-01-15T10:30:00Z"
+                nordic_gods:
+                  summary: Nordic gods example
+                  value:
+                    mythology: "nordic"
+                    gods:
+                      - "Baldur"
+                      - "Freyja"
+                      - "Heimdall"
+                      - "Frigga"
+                      - "Hel"
+                      - "Loki"
+                      - "Njord"
+                      - "Odin"
+                      - "Thor"
+                      - "Tyr"
+                    count: 10
+                    source: "external_api"
+                    timestamp: "2024-01-15T10:30:00Z"
+                indian_gods:
+                  summary: Indian gods example
+                  value:
+                    mythology: "indian"
+                    gods:
+                      - "Brahma"
+                      - "Vishnu"
+                      - "Shiva"
+                      - "Ganapati"
+                      - "Rama"
+                      - "Krishna"
+                      - "Saraswati"
+                      - "Lakshmi"
+                      - "Durga Devi"
+                      - "Indra"
+                      - "Surya"
+                      - "Agni"
+                      - "Hanuman"
+                    count: 13
+                    source: "external_api"
+                    timestamp: "2024-01-15T10:30:00Z"
+                celtiberian_gods:
+                  summary: Celtiberian gods example
+                  value:
+                    mythology: "celtiberian"
+                    gods:
+                      - "Ataecina"
+                      - "Candamius"
+                      - "Cariociecus"
+                      - "Dercetius"
+                      - "Duillae"
+                      - "Eacus"
+                      - "Endouellicus"
+                      - "Semnocosus"
+                    count: 8
+                    source: "external_api"
+                    timestamp: "2024-01-15T10:30:00Z"
+        '400':
+          description: Bad request - invalid mythology parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "INVALID_MYTHOLOGY"
+                message: "The mythology parameter must be one of: greek, roman, nordic, indian, celtiberian"
+                timestamp: "2024-01-15T10:30:00Z"
+                path: "/api/v1/gods/INVALID"
+        '404':
+          description: Not found - mythology not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "MYTHOLOGY_NOT_FOUND"
+                message: "The requested mythology is not supported"
+                timestamp: "2024-01-15T10:30:00Z"
+                path: "/api/v1/gods/UNSUPPORTED"
+        '500':
+          description: Internal server error - gateway processing error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "INTERNAL_SERVER_ERROR"
+                message: "An error occurred while processing the request"
+                timestamp: "2024-01-15T10:30:00Z"
+                path: "/api/v1/gods/greek"
+        '503':
+          description: Service unavailable - third-party service is down
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "SERVICE_UNAVAILABLE"
+                message: "The external mythology service is currently unavailable"
+                timestamp: "2024-01-15T10:30:00Z"
+                path: "/api/v1/gods/greek"
+
+components:
+  schemas:
+    GodsResponse:
+      type: object
+      required:
+        - mythology
+        - gods
+        - count
+        - source
+        - timestamp
+      properties:
+        mythology:
+          type: string
+          enum:
+            - greek
+            - roman
+            - nordic
+            - indian
+            - celtiberian
+          description: The mythology type requested (always lowercase in response)
+          example: "greek"
+        gods:
+          type: array
+          items:
+            type: string
+          description: List of gods for the specified mythology
+          example: ["Zeus", "Hera", "Poseidon"]
+        count:
+          type: integer
+          minimum: 0
+          description: Number of gods in the response
+          example: 20
+        source:
+          type: string
+          description: Source of the data (typically 'external_api')
+          example: "external_api"
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the response was generated
+          example: "2024-01-15T10:30:00Z"
+      description: Response containing gods for a specific mythology
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+        - timestamp
+        - path
+      properties:
+        error:
+          type: string
+          description: Error code identifying the type of error
+          example: "INVALID_MYTHOLOGY"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "The mythology parameter must be one of: greek, roman, nordic, indian, celtiberian"
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the error occurred
+          example: "2024-01-15T10:30:00Z"
+        path:
+          type: string
+          description: The request path that caused the error
+          example: "/api/v1/gods/INVALID"
+        details:
+          type: object
+          description: Additional error details (optional)
+          additionalProperties: true
+      description: Standard error response format
+
+  parameters:
+    MythologyPathParam:
+      name: mythology
+      in: path
+      required: true
+      description: The mythology type to retrieve gods for (case-insensitive)
+      schema:
+        type: string
+        enum:
+          - greek
+          - roman
+          - nordic
+          - indian
+          - celtiberian
+          - GREEK
+          - ROMAN
+          - NORDIC
+          - INDIAN
+          - CELTIBERIAN
+
+tags:
+  - name: God Mythology Gateway
+    description: Main gateway endpoints for retrieving mythology data
+
+externalDocs:
+  description: Find more information about the third-party services
+  url: https://my-json-server.typicode.com/jabrena/latency-problems
