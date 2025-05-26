@@ -38,7 +38,7 @@ Juan Antonio Breña Moral
 - **[Problem 2:](./docs/problem2/README.md)**  Calculate what Greek god has more literature in Wikipedia.
 - **[Problem 3:](./docs/problem3/README.md)**  Develop a REST Gateway about Gods.
 - **[Problem 4:](./docs/problem4/README.md)**  Develop a REST API to offer in a single endpoint God Data from multiple Mythologies
-- **[Problem 5:](./docs/problem5/README.md)**  Pending to Refactor.
+- **[Problem 5:](./docs/problem5/README.md)**  Develop a REST API which read Greek god data which it is synchronized periodically from a third party service.
 - **[Problem 6:](./docs/problem6/README.md)**  Return all Greek gods starting with `a` and apply a Retry behaviour.
 - **[Problem 7:](./docs/problem7/README.md)**  Return all Roman gods finishing the name with `s` and apply a Circuit Breaker behaviour.
 - **[Problem 8:](./docs/problem8/README.md)**  Return all gods who contains in the name `a` & `i` and apply a Rate limit policy.
