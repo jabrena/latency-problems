@@ -1,0 +1,29 @@
+@startuml
+
+actor "User"
+
+box "Microservice scope" #LightBlue
+
+boundary "REST API"
+database "God Db"
+control "God Updater"
+
+end box
+
+group Write process
+
+"God Updater" -> "my-json-server": GET https://my-json-server.typicode.com/jabrena/latency-problems/greek
+"God Updater" <-- "my-json-server": List of greek gods
+"God Db" <- "God Updater" : Periodical Update
+
+end
+
+group Read process
+
+"User" -> "REST API": GET /api/v1/gods/greek
+"God Db" -> "REST API": List of greek gods
+"User" <-- "REST API": List of greek gods
+
+end
+
+@enduml
