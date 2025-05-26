@@ -6,9 +6,6 @@ The development will behave like a Gateway to the source of truth located in: ht
 
 **Notes:**
 
-- API now accepts lowercase mythology parameters (e.g., `greek` instead of `GREEK`) for improved user experience
-- Backward compatibility is maintained for uppercase parameters
-- All responses return lowercase mythology names regardless of input case
 - Review the timeout for Every connection.
 - REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 - REST API 2: https://my-json-server.typicode.com/jabrena/latency-problems/roman
@@ -18,7 +15,4 @@ The development will behave like a Gateway to the source of truth located in: ht
 
 **Examples:**
 
-- `GET /api/v1/gods/greek` - Returns Greek gods (recommended)
-- `GET /api/v1/gods/GREEK` - Also returns Greek gods (backward compatibility)
-- `GET /api/v1/gods/Roman` - Returns Roman gods (mixed case also supported)
-
+- `GET /api/v1/gods/greek` - Returns Greek gods

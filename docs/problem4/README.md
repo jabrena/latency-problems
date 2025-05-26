@@ -1,18 +1,18 @@
-### Problem 4
+# Problem 4
 
-```gherkin
-Given a set of providers to exchange money
-When  make the request to get the rate for the exchange 100 EUR into USD
-Then  find the average rate from valid responses from the the providers
-```
-
-![](./sequence-diagram-latency-problem4.svg)
+Provide a REST API to offer in a single endpoint God Data from multiple Mythologies like `greek`, `roman`, `nordic`, `indian` or `celtiberian`.
+The endpoint will accept request in the following endpoint: `GET /api/v1/gods`
+The development will behave like a Gateway to the source of truth located in: https://my-json-server.typicode.com/jabrena/latency-problems/
 
 **Notes:**
-Review the timeout for Every connection.
-Money exchange providers:
-- https://transferwise.com/fr?sourceCurrency=EUR&targetCurrency=USD&sourceAmount=100
-- https://www.xe.com/es/currencyconverter/convert/?Amount=100&From=EUR&To=USD
-- https://www.iban.com/currency-converter?from_currency=EUR&to_currency=USD&amount=100
-- https://www.x-rates.com/calculator/?from=EUR&to=USD&amount=100
 
+- Review the timeout for Every connection.
+- REST API 1: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+- REST API 2: https://my-json-server.typicode.com/jabrena/latency-problems/roman
+- REST API 3: https://my-json-server.typicode.com/jabrena/latency-problems/nordic
+- REST API 4: https://my-json-server.typicode.com/jabrena/latency-problems/indian
+- REST API 5: https://my-json-server.typicode.com/jabrena/latency-problems/celtiberian
+
+**Examples:**
+
+- `GET /api/v1/gods` - Returns all gods using the following structure:

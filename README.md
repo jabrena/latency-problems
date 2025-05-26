@@ -36,9 +36,9 @@ Juan Antonio Breña Moral
 
 - **[Problem 1:](./docs/problem1/README.md)**  Consume God APIS (Greek, Roman & Nordic) and filter gods starting by 'n', convert into Decimal format and sum.
 - **[Problem 2:](./docs/problem2/README.md)**  Calculate what Greek god has more literature in Wikipedia.
-- **[Problem 3:](./docs/problem3/README.md)**  Develop a Thread Safe God gateway hiding details from the god data source.
-- **[Problem 4:](./docs/problem4/README.md)**  Pending a Refactoring
-- **[Problem 5:](./docs/problem5/README.md)**  Return all Greek gods starting with `a` from a Pool of 5 instances of Greek API.
+- **[Problem 3:](./docs/problem3/README.md)**  Develop a REST Gateway about Gods.
+- **[Problem 4:](./docs/problem4/README.md)**  Develop a REST API to offer in a single endpoint God Data from multiple Mythologies
+- **[Problem 5:](./docs/problem5/README.md)**  Pending to Refactor.
 - **[Problem 6:](./docs/problem6/README.md)**  Return all Greek gods starting with `a` and apply a Retry behaviour.
 - **[Problem 7:](./docs/problem7/README.md)**  Return all Roman gods finishing the name with `s` and apply a Circuit Breaker behaviour.
 - **[Problem 8:](./docs/problem8/README.md)**  Return all gods who contains in the name `a` & `i` and apply a Rate limit policy.
