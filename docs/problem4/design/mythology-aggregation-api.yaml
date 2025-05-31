@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: Mythology Aggregation Service API
+  description: API for aggregating mythology gods data from multiple external sources
+  version: 1.0.0
+  contact:
+    name: Juan Antonio Breña Moral
+    email: my@email.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /api/v1/gods:
+    get:
+      tags:
+        - Mythology Gods
+      summary: Get all mythology gods data
+      description: |
+        Retrieves aggregated mythology gods data from all available mythologies including:
+        - Greek mythology
+        - Roman mythology
+        - Nordic mythology
+        - Indian mythology
+        - Celtiberian mythology
+
+        The response includes gods from all mythologies in a unified format with unique identifiers.
+      operationId: getAllMythologyGods
+      responses:
+        '200':
+          description: Successful operation - returns all mythology gods data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MythologyGod'
+              examples:
+                success:
+                  summary: Example response with gods from all mythologies
+                  value:
+                    - id: 1
+                      mythology: "greek"
+                      god: "Zeus"
+                    - id: 2
+                      mythology: "roman"
+                      god: "Jupiter"
+                    - id: 3
+                      mythology: "nordic"
+                      god: "Odin"
+                    - id: 4
+                      mythology: "indian"
+                      god: "Brahma"
+                    - id: 5
+                      mythology: "celtiberian"
+                      god: "Ataecina"
+          headers:
+            Content-Type:
+              description: Response content type
+              schema:
+                type: string
+                example: "application/json"
+            X-Response-Time:
+              description: Response time in milliseconds
+              schema:
+                type: integer
+                example: 2500
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '502':
+          description: Bad gateway - external service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '504':
+          description: Gateway timeout - response time exceeded 5 seconds
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    MythologyGod:
+      type: object
+      required:
+        - id
+        - mythology
+        - god
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the god entry
+          example: 1
+          minimum: 1
+        mythology:
+          type: string
+          description: The mythology tradition this god belongs to
+          enum:
+            - "greek"
+            - "roman"
+            - "nordic"
+            - "indian"
+            - "celtiberian"
+          example: "greek"
+        god:
+          type: string
+          description: The name of the god
+          example: "Zeus"
+          minLength: 1
+          maxLength: 100
+      example:
+        id: 1
+        mythology: "greek"
+        god: "Zeus"
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type
+          example: "INTERNAL_SERVER_ERROR"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Unable to retrieve mythology data from external services"
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the error occurred
+          example: "2024-01-15T10:30:00Z"
+      example:
+        error: "GATEWAY_TIMEOUT"
+        message: "External mythology services did not respond within 5 seconds"
+        timestamp: "2024-01-15T10:30:00Z"
+tags:
+  - name: Mythology Gods
+    description: Operations related to mythology gods data aggregation
