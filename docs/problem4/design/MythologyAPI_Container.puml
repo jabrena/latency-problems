@@ -1,0 +1,27 @@
+@startuml Multi-Mythology Gods API - Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Container diagram for Multi-Mythology Gods API System
+
+' External Actors
+Person(client_apps, "Client Applications", "Applications that consume mythology data")
+
+' External Systems
+System_Ext(mythology_data_service, "Mythology Data Service", "External service providing gods data for multiple mythologies via my-json-server.typicode.com/jabrena/latency-problems")
+
+' System Boundary
+System_Boundary(mythology_api, "Multi-Mythology Gods API") {
+    Container(rest_controller, "REST API Controller", "Spring Boot", "Handles HTTP requests and provides /api/v1/gods endpoint")
+    Container(aggregation_service, "Data Aggregation Service", "Java/Spring", "Orchestrates data collection, performs simple transformation, and returns unified JSON format")
+    Container(integration_service, "External API Integration Service", "Java/HTTP Client with Resilience", "Manages HTTP connections, timeouts, retries, circuit breakers, and error handling for external mythology APIs")
+}
+
+' Relationships
+Rel(client_apps, rest_controller, "GET /api/v1/gods", "HTTPS/REST")
+Rel(rest_controller, aggregation_service, "Request gods data", "Method call")
+Rel(aggregation_service, integration_service, "Fetch mythology data", "Method call")
+Rel(integration_service, mythology_data_service, "GET /greek, /roman, /nordic, /indian, /celtiberian", "HTTPS")
+Rel(aggregation_service, rest_controller, "Return unified JSON", "Response")
+
+SHOW_LEGEND()
+@enduml

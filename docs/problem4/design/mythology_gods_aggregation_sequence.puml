@@ -1,0 +1,86 @@
+@startuml Mythology Gods Data Aggregation API Flow
+!theme plain
+title Multi-Mythology Gods Data Aggregation - API Flow
+
+' Actors and Participants
+participant "Client\nApplication" as Client #LightBlue
+participant "Mythology\nAggregation\nService" as API #LightGreen
+box "External Mythology APIs" #LightYellow
+  participant "Greek\nAPI" as GreekAPI
+  participant "Roman\nAPI" as RomanAPI
+  participant "Nordic\nAPI" as NordicAPI
+  participant "Indian\nAPI" as IndianAPI
+  participant "Celtiberian\nAPI" as CeltiberianAPI
+end box
+
+' Main Sequence Flow
+Client -> API : GET /api/v1/gods
+note right of Client : Request for all mythology gods data
+
+activate API
+note right of API : Service receives request\nand initiates aggregation
+
+' Parallel API calls to external services
+API ->> GreekAPI : GET /greek
+API ->> RomanAPI : GET /roman
+API ->> NordicAPI : GET /nordic
+API ->> IndianAPI : GET /indian
+API ->> CeltiberianAPI : GET /celtiberian
+
+note right of API : Parallel calls to all\nexternal mythology APIs\n(timeout: 5 seconds)
+
+' Responses from external APIs
+GreekAPI -->> API : ["Zeus", "Hera", "Poseidon", ...]
+note right of GreekAPI : Returns Greek gods array
+
+RomanAPI -->> API : ["Jupiter", "Venus", "Mars", ...]
+note right of RomanAPI : Returns Roman gods array
+
+NordicAPI -->> API : ["Odin", "Thor", "Baldur", ...]
+note right of NordicAPI : Returns Nordic gods array
+
+IndianAPI -->> API : ["Brahma", "Vishnu", "Shiva", ...]
+note right of IndianAPI : Returns Indian gods array
+
+CeltiberianAPI -->> API : ["Ataecina", "Candamius", ...]
+note right of CeltiberianAPI : Returns Celtiberian gods array
+
+' Data transformation and aggregation
+note right of API : Aggregate and transform data:\n- Assign unique IDs\n- Add mythology field\n- Create unified structure
+
+' Success response
+API --> Client : HTTP 200\n[{"id":1,"mythology":"greek","god":"Zeus"},\n {"id":2,"mythology":"roman","god":"Jupiter"},\n {"id":3,"mythology":"nordic","god":"Odin"},\n ...]
+note right of API : Returns aggregated JSON\nwith unified format
+
+deactivate API
+
+' Error Handling Scenarios
+|||
+== Error Scenarios ==
+|||
+
+' Timeout scenario
+Client -> API : GET /api/v1/gods
+activate API
+
+API ->> GreekAPI : GET /greek
+API ->> RomanAPI : GET /roman
+API ->> NordicAPI : GET /nordic
+API ->> IndianAPI : GET /indian
+API ->> CeltiberianAPI : GET /celtiberian
+
+alt Timeout (> 5 seconds)
+  note right of API : One or more APIs\ndo not respond in time
+  API --> Client : HTTP 504\n{"error":"GATEWAY_TIMEOUT",\n"message":"External mythology services\ndid not respond within 5 seconds"}
+else External API Error
+  GreekAPI -->> API : HTTP 500 (Error)
+  note right of API : Handle partial failures\nand external service errors
+  API --> Client : HTTP 502\n{"error":"BAD_GATEWAY",\n"message":"External service unavailable"}
+else Internal Service Error
+  note right of API : Internal processing error
+  API --> Client : HTTP 500\n{"error":"INTERNAL_SERVER_ERROR",\n"message":"Unable to retrieve\nmythology data"}
+end
+
+deactivate API
+
+@enduml

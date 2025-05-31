@@ -1,8 +1,8 @@
 # Problem 4
 
 Provide a REST API to offer in a single endpoint God Data from multiple Mythologies like `greek`, `roman`, `nordic`, `indian` or `celtiberian`.
-The endpoint will accept request in the following endpoint: `GET /api/v1/gods`
-The development will behave like a Gateway to the source of truth located in: https://my-json-server.typicode.com/jabrena/latency-problems/
+The endpoint will accept request in the following endpoint: `GET /api/v1/gods`.
+The development will return the information once the endpoint aggregate the information from all mythologies.
 
 **Notes:**
 
@@ -16,3 +16,13 @@ The development will behave like a Gateway to the source of truth located in: ht
 **Examples:**
 
 - `GET /api/v1/gods` - Returns all gods using the following structure:
+
+```json
+[
+    {
+        "id": 1,
+        "mythology":"greek",
+        "god": "Zeus"
+    }
+]
+```

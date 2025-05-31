@@ -1,0 +1,22 @@
+@startuml Multi-Mythology Gods API - System Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title System Context diagram for Multi-Mythology Gods API System
+
+' External Actors/Users
+Person(client_apps, "Client Applications", "Applications that need mythology data (web apps, mobile apps, research tools)")
+Person(mythology_enthusiasts, "Mythology Enthusiasts", "End users who access mythology information through client applications")
+
+' The Main System
+System(mythology_api, "Multi-Mythology Gods API", "Provides unified access to gods data from multiple mythologies through a single REST endpoint")
+
+' External Systems
+System_Ext(mythology_data_service, "Mythology Data Service", "External service providing gods data for multiple mythologies (Greek, Roman, Nordic, Indian, Celtiberian) via my-json-server.typicode.com")
+
+' Relationships
+Rel(mythology_enthusiasts, client_apps, "Uses", "HTTP/Browser")
+Rel(client_apps, mythology_api, "Calls GET /api/v1/gods", "HTTPS/REST")
+Rel(mythology_api, mythology_data_service, "Fetches gods data from multiple mythology endpoints (/greek, /roman, /nordic, /indian, /celtiberian)", "HTTPS/REST")
+
+SHOW_LEGEND()
+@enduml
