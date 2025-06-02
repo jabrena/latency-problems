@@ -22,7 +22,7 @@ In `Reactor` you can use [Mono<T>](https://projectreactor.io/docs/core/release/a
 in `RxJava`, you can use [Flowable<T>](http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html) & finally, in [Mutiny](https://quarkus.io/guides/mutiny-primer) you have [Uni or Multi](https://smallrye.io/smallrye-mutiny/latest/reference/uni-and-multi/).
 
 Finally, exist libraries that offer rich implementations of Reactive programming patterns.
-In `Resilience4j`, you could find solutions for: `Circuit breaking`, `Rate limiting`, `Bulkheading`, `Automatic retrying`
+In `Resilience4j`, you could find solutions for: `Circuit breaking`, `Rate limiting`, `Automatic retrying`
 
 The purpose of this repository is the design of a set problems adding the Latency as part of the problem to be solved in several ways.
 
@@ -39,11 +39,10 @@ Juan Antonio Breña Moral
 - **[Problem 3:](./docs/problem3/README.md)**  Develop a REST Gateway about Gods.
 - **[Problem 4:](./docs/problem4/README.md)**  Develop a REST API to offer in a single endpoint God Data from multiple Mythologies
 - **[Problem 5:](./docs/problem5/README.md)**  Develop a REST API which read Greek god data which it is synchronized periodically from a third party service.
-- **[Problem 6:](./docs/problem6/README.md)**  Return all Greek gods starting with `a` and apply a Retry behaviour.
-- **[Problem 7:](./docs/problem7/README.md)**  Return all Roman gods finishing the name with `s` and apply a Circuit Breaker behaviour.
-- **[Problem 8:](./docs/problem8/README.md)**  Return all gods who contains in the name `a` & `i` and apply a Rate limit policy.
-- **[Problem 9:](./docs/problem9/README.md)**  Return all Greek & Roman gods and apply a Bulk head policy.
-- **[Problem 10:](./docs/problem10/README.md)** Calculate the popularity of Indian gods in Mahabharata
+- **[Problem 6:](./docs/problem6/README.md)**  Return all Greek gods starting with `a` and apply a Rate limit policy, Retry & Circuit Breaker for incoming http requests.
+- **[Problem 7:](./docs/problem7/README.md)**  Return all Roman gods finishing the name with `s` and apply a Retry & Circuit Breaker behaviour for the integration with theexternal third party
+- **[Problem 8:](./docs/problem8/README.md)** Calculate the popularity of Indian gods in Mahabharata
+- **[Problem 9:](./docs/problem9/README.md)** Develop a REST API which read data from a Kafka topic with the name greek-gods
 
 ## [Troubleshooting](./TROUBLESHOOTING.md)
 

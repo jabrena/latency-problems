@@ -1,5 +1,7 @@
 # Problem 7
 
+Return all Roman gods finishing the name with `s` and apply a Retry & Circuit Breaker behaviour for the integration with theexternal third party
+
 ```gherkin
 Feature: Consume a REST Roman God Service
 
