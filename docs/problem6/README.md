@@ -1,5 +1,7 @@
 # Problem 6
 
+Return all Greek gods starting with `a` and apply a Rate limit policy, Retry & Circuit Breaker for incoming http requests.
+
 ```gherkin
 Feature: Consume a REST Greek God Service
 
