@@ -1,5 +1,7 @@
 # Problem 1
 
+Consume God APIS (Greek, Roman & Nordic) and filter gods starting by 'n', convert into Decimal format and sum.
+
 ## Gherkin file
 
 ```gherkin
