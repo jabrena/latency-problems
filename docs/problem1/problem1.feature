@@ -1,4 +1,5 @@
-Feature: Consume some REST God Services
+Feature: God Analysis API
+# REST API: GET /api/v1/gods/stats/sum
 # Notes:
 # - Decimal Conversion Rule: Name then each char to its Unicode int value, then concatenate these ints as strings.
 # (e.g., "Zeus" -> Z(90)e(101)u(117)s(115) -> "90101117115").
@@ -8,12 +9,12 @@ Feature: Consume some REST God Services
 # - Roman API: https://my-json-server.typicode.com/jabrena/latency-problems/roman
 # - Nordic API: https://my-json-server.typicode.com/jabrena/latency-problems/nordic
 
-Background:
-    Given the system is configured to use the Greek, Roman, and Nordic god name APIs
+  Background:
+    Given the God Analysis API is available at "/api/v1"
     And the system is configured with an API call timeout of 5 seconds
 
-Scenario: Consume the APIs in a Happy path scenario
-    When  call and retrieve all API info
-    Then  filter by god starting with `n`
-    And   the filtered god names are converted into a decimal format
-    And   the total sum of the decimal values should be 78179288397447443426
+  Scenario: Happy path - Get sum with explicit sources
+    When the client sends a GET request to "/gods/stats/sum" with query parameters "filter" = "n" and "sources" = "greek,roman,nordic"
+    Then the response status code should be 200
+    And the response body should contain a JSON object with a "sum" field
+    And the value of "sum" should be "78179288397447443426"
