@@ -2,9 +2,9 @@
 
 ## User Story Statement
 
-As an API consumer / data analyst
-I want to consume God APIs (Greek, Roman & Nordic), filter gods whose names start with 'n', convert each filtered god name into a decimal representation, and return the sum of those values
-So that I can perform cross-pantheon analysis and aggregate mythology data for research, reporting, or educational applications.
+- **As an** API consumer / data analyst
+- **I want to** consume God APIs (Greek, Roman & Nordic), filter gods whose names start with 'n', convert each filtered god name into a decimal representation, and return the sum of those values
+- **So that** I can perform cross-pantheon analysis and aggregate mythology data for research, reporting, or educational applications.
 
 **Notes:**
 
