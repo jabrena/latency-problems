@@ -1,6 +1,16 @@
 # Problem 1
 
-Consume God APIS (Greek, Roman & Nordic) and filter gods starting by 'n', convert into Decimal format and sum.
+## User Story Statement
+
+As an API consumer / data analyst
+I want to consume God APIs (Greek, Roman & Nordic), filter gods whose names start with 'n', convert each filtered god name into a decimal representation, and return the sum of those values
+So that I can perform cross-pantheon analysis and aggregate mythology data for research, reporting, or educational applications.
+
+**Notes:**
+
+- Decimal conversion: Each character in a god name is converted to its numeric code (e.g., ASCII/Unicode), and those values are summed per name. The final result is the sum of all such per-name sums.
+- Case sensitivity: Filtering uses case-insensitive matching (e.g., "Nike", "Nemesis", "Njord").
+- APIs: Assumes REST APIs similar to [my-json-server-oas.yaml](./my-json-server-oas.yaml).
 
 ## Gherkin file
 
@@ -25,6 +35,8 @@ Scenario: Consume the APIs in a Happy path scenario
     And   the filtered god names are converted into a decimal format
     And   the total sum of the decimal values should be 78179288397447443426
 ```
+
+[Guerkin file](./problem1.feature)
 
 ## UML Sequence diagram
 
