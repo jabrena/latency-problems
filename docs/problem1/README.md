@@ -24,12 +24,6 @@ Scenario: Consume the APIs in a Happy path scenario
     Then  filter by god starting with `n`
     And   the filtered god names are converted into a decimal format
     And   the total sum of the decimal values should be 78179288397447443426
-
-Scenario: Consume APIs and no gods match filter
-    When  call and retrieve all API info
-    Then  filter by god starting with `n`
-    And   the system indicates that no gods matched the filter
-    And   the total sum of the decimal values should be 0
 ```
 
 ## UML Sequence diagram
