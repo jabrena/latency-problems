@@ -39,6 +39,17 @@ Scenario: Happy path - Get sum with explicit sources
 
 [Gherkin file](./problem1.feature)
 
+## Implementation details
+
+- Java 25
+- Spring Boot 4.0.x
+- Spring Boot Modulith
+- RestClient
+- Junit 6
+- Mockito
+- Wiremock
+- RestAssured
+
 ## UML Sequence diagram
 
 ![](./sequence-diagram-latency-problem1.png)
