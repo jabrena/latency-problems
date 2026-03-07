@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Cross-Pantheon God Analysis API
+  description: |
+    REST API for cross-pantheon mythology analysis. Consumes Greek, Roman, and Nordic god APIs,
+    filters gods whose names start with 'n', converts each filtered god name into a decimal
+    representation, and returns the sum of those values.
+
+    **Decimal Conversion Rule:** Each character in a god name is converted to its Unicode code point.
+    These values are concatenated as strings per name (e.g., "Zeus" -> Z(90)e(101)u(117)s(115) -> "90101117115").
+    The final result is the sum of all such per-name concatenated values.
+
+    **Filtering:** Case-insensitive matching for names starting with 'n' (e.g., "Nike", "Nemesis", "Njord").
+
+    **Timeout:** If an upstream API call times out (default 5 seconds), the calculation proceeds with
+    the successfully retrieved lists.
+  version: 1.0.0
+  contact:
+    name: Juan Antonio Breña Moral
+    email: my@email.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+servers:
+  - url: http://localhost/api/v1
+    description: API base path
+
+paths:
+  /gods/stats/sum:
+    get:
+      tags:
+        - Cross-Pantheon Analysis
+      summary: Get sum of decimal values for gods
+      description: |
+        Consumes Greek, Roman, and Nordic god APIs, converts each god name into a decimal
+        representation, and returns the sum. When filter=n is provided, only gods whose names
+        start with 'n' are included. When filter is omitted, all gods from all pantheons are summed.
+
+        **Upstream APIs:**
+        - Greek: https://my-json-server.typicode.com/jabrena/latency-problems/greek
+        - Roman: https://my-json-server.typicode.com/jabrena/latency-problems/roman
+        - Nordic: https://my-json-server.typicode.com/jabrena/latency-problems/nordic
+      operationId: getCrossPantheonDecimalSum
+      parameters:
+        - name: filter
+          in: query
+          description: Filter gods by name prefix (e.g., n for gods starting with 'n'). When omitted, returns sum of all gods.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 1
+            example: "n"
+        - name: sources
+          in: query
+          description: Pantheon sources to include (comma-separated, e.g. sources=greek,roman,nordic). When omitted, all sources are used.
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [greek, roman, nordic]
+          style: form
+          explode: false
+      responses:
+        '200':
+          description: Successful operation - returns the sum of decimal values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SumResponse'
+        '500':
+          description: Internal server error
+        '504':
+          description: Gateway timeout (when all upstream APIs fail)
+
+components:
+  schemas:
+    SumResponse:
+      type: object
+      required:
+        - sum
+      properties:
+        sum:
+          type: string
+          description: Total sum of decimal values (string to support large numbers like 78179288397447443426)
+          example: "78179288397447443426"

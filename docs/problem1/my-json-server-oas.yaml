@@ -28,7 +28,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  $ref: '#/components/schemas/ExternalGod'
               examples:
                 success:
                   value:
@@ -71,7 +71,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  $ref: '#/components/schemas/ExternalGod'
               examples:
                 success:
                   value:
@@ -100,7 +100,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  $ref: '#/components/schemas/ExternalGod'
               examples:
                 success:
                   value:

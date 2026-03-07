@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.latency-problems</groupId>
+    <artifactId>latency-problems</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Latency Problems</name>
+    <description>OpenAPI validation for Cross-Pantheon God Analysis API</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <openapi-generator.version>7.14.0</openapi-generator.version>
+        <openapi-style-validator.version>1.11</openapi-style-validator.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- OpenAPI Style Validator (https://github.com/OpenAPITools/openapi-style-validator) - Maven/Java only -->
+            <plugin>
+                <groupId>org.openapitools.openapistylevalidator</groupId>
+                <artifactId>openapi-style-validator-maven-plugin</artifactId>
+                <version>${openapi-style-validator.version}</version>
+                <executions>
+                    <execution>
+                        <id>style-validate-god-api</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                        <configuration>
+                            <inputFile>${project.basedir}/docs/problem1/god-api.yaml</inputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>style-validate-my-json-server</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                        <configuration>
+                            <inputFile>${project.basedir}/docs/problem1/my-json-server-oas.yaml</inputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Validates god-api.yaml (God Analysis API) -->
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator.version}</version>
+                <executions>
+                    <execution>
+                        <id>validate-god-api</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/docs/problem1/god-api.yaml</inputSpec>
+                            <generatorName>openapi-yaml</generatorName>
+                            <output>${project.build.directory}/openapi/god-api</output>
+                            <skipOverwrite>true</skipOverwrite>
+                        </configuration>
+                    </execution>
+                    <!-- Validates my-json-server-oas.yaml (External JSON Server API) -->
+                    <execution>
+                        <id>validate-my-json-server-oas</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/docs/problem1/my-json-server-oas.yaml</inputSpec>
+                            <generatorName>openapi-yaml</generatorName>
+                            <output>${project.build.directory}/openapi/my-json-server</output>
+                            <skipOverwrite>true</skipOverwrite>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
