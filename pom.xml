@@ -34,7 +34,7 @@
                             <goal>validate</goal>
                         </goals>
                         <configuration>
-                            <inputFile>${project.basedir}/docs/problem1/god-api.yaml</inputFile>
+                            <inputFile>${project.basedir}/docs/problem1/US-001-god-analysis-api.openapi.yaml</inputFile>
                         </configuration>
                     </execution>
                     <execution>
@@ -49,7 +49,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Validates god-api.yaml (God Analysis API) -->
+            <!-- Validates US-001 God Analysis API OpenAPI spec -->
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
@@ -62,7 +62,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/docs/problem1/god-api.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/docs/problem1/US-001-god-analysis-api.openapi.yaml</inputSpec>
                             <generatorName>openapi-yaml</generatorName>
                             <output>${project.build.directory}/openapi/god-api</output>
                             <skipOverwrite>true</skipOverwrite>

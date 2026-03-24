@@ -20,6 +20,12 @@ info:
     - Roman: `https://my-json-server.typicode.com/jabrena/latency-problems/roman`
     - Nordic: `https://my-json-server.typicode.com/jabrena/latency-problems/nordic`
   version: 1.0.0
+  contact:
+    name: latency-problems maintainers
+    url: https://github.com/jabrena/latency-problems
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
 
 servers:
   - url: https://api.example.com
