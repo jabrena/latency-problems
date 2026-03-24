@@ -9,8 +9,7 @@
 **Notes:**
 
 - Decimal conversion: Each character in a god name is converted to its numeric code (e.g., ASCII/Unicode), and those values are summed per name. The final result is the sum of all such per-name sums.
-- Case sensitivity: Filtering uses case-insensitive matching (e.g., "Nike", "Nemesis", "Njord").
-- APIs: Assumes REST APIs similar to [my-json-server-oas.yaml](./my-json-server-oas.yaml).
+- Case sensitivity: Filtering for gods starting with `n` is case-sensitive (only lowercase `n`), consistent with the Gherkin below.
 
 ## Gherkin file
 
@@ -20,7 +19,8 @@ Feature: God Analysis API
 # Notes:
 # - Decimal Conversion Rule: Name then each char to its Unicode int value, then concatenate these ints as strings.
 # (e.g., "Zeus" -> Z(90)e(101)u(117)s(115) -> "90101117115").
-# - If in the process to load the list, the timeout is reached, the process will calculate with the rest of the lists.
+# - Outbound HTTP uses Spring RestClient with connect/read timeouts from application configuration (defaults in application.yml).
+# - If a source request hits the configured timeout, aggregation continues with the other sources (partial result).
 # - Filtering for gods starting with 'n' is case-sensitive (only lowercase 'n').
 # - Greek API: https://my-json-server.typicode.com/jabrena/latency-problems/greek
 # - Roman API: https://my-json-server.typicode.com/jabrena/latency-problems/roman
@@ -28,7 +28,7 @@ Feature: God Analysis API
 
 Background:
     Given the God Analysis API is available at "/api/v1"
-    And the system is configured with an API call timeout of 5 seconds
+    And the system is configured with HTTP connect and read timeouts for outbound RestClient calls (default 5 seconds in application configuration)
 
 Scenario: Happy path - Get sum with explicit sources
     When the client sends a GET request to "/gods/stats/sum" with query parameters "filter" = "n" and "sources" = "greek,roman,nordic"
@@ -36,32 +36,3 @@ Scenario: Happy path - Get sum with explicit sources
     And the response body should contain a JSON object with a "sum" field
     And the value of "sum" should be "78179288397447443426"
 ```
-
-[Gherkin file](./problem1.feature)
-
-## Implementation details
-
-- Java 25
-- Spring Boot 4.0.x
-- Spring Boot Modulith
-- RestClient
-- Junit 6
-- Mockito
-- Wiremock
-- RestAssured
-
-## UML Sequence diagram
-
-![](./sequence-diagram-latency-problem1.png)
-
-## Open API specifications
-
-- [Cross-Pantheon God Analysis API](./god-api.yaml) – REST API under test (`GET /api/v1/gods/stats/sum`)
-- [Upstream APIs](./my-json-server-oas.yaml) – Greek, Roman, Nordic god data sources
-
-## Issues detected
-
-- The filter create confussion because exist 2 decisions:
-- transform the god name to lowercase only for the filter or transform for everything.
-
-It could be interesting to be added to the gherkin file
