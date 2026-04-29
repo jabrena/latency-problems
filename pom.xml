@@ -15,7 +15,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <openapi-generator.version>7.21.0</openapi-generator.version>
+        <openapi-generator.version>7.22.0</openapi-generator.version>
         <openapi-style-validator.version>1.11</openapi-style-validator.version>
     </properties>
 
